@@ -1,7 +1,4 @@
-import DataForm from './components/DataForm';
+import Chaos from './Chaos';
 
-const container = document.querySelector('.container');
-
-const dataForm = new DataForm(container);
-
-dataForm.init();
+const chaos = new Chaos(document.querySelector('.chaos_organizer'), 'https://https://ahj-diploma-server.vercel.app');
+chaos.init();

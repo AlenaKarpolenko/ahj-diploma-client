@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   output: {
@@ -35,19 +36,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: 'src/img/[name].[ext]',
-              limit: false,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(txt)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
+              limit: 8192,
             },
           },
         ],
@@ -59,6 +48,7 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html',
     }),
+    new OptimizeCssAssetsPlugin({}),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
